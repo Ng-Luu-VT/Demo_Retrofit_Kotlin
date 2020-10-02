@@ -11,9 +11,8 @@ import com.example.demo_retrofit_kotlin.`interface`.ItemRecyclerUserInterface
 import com.example.demo_retrofit_kotlin.item.ItemRecyclerUser
 import java.util.*
 
-class RecyclerUserAdapter(mData: ArrayList<ItemRecyclerUser>?) :
+class RecyclerUserAdapter(private val mData: ArrayList<ItemRecyclerUser>?) :
     RecyclerView.Adapter<RecyclerUserAdapter.NewViewHolder>() {
-    private val mData: ArrayList<ItemRecyclerUser>? = mData
 
     private var mItemRecyclerUserInterface: ItemRecyclerUserInterface? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewViewHolder {

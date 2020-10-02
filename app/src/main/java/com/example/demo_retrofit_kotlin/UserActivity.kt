@@ -60,8 +60,8 @@ class UserActivity : AppCompatActivity() {
         val listItem: ArrayList<ItemRecyclerUser> = ArrayList<ItemRecyclerUser>()
         for (i in 0..10) {
             val item = ItemRecyclerUser()
-            item.setTvTitle("" + (i + 1))
-            item.setTvDetail("" + (i + 1))
+            item.setTvTitle("aaa" + (i + 1))
+            item.setTvDetail("bbb" + (i + 1))
             listItem.add(item)
         }
 
