@@ -9,6 +9,6 @@ interface UserService{
     @GET("users/{id}")
     fun getUser1(@Path("id") id:Int
     ) : Call<UserResponse>
-    @GET("user/{idd}")
-    fun getListUser(@Path("idd") idd:String) : Call<MutableList<UserResponse>>
+    @GET("user/")
+    fun getListUser() : Call<MutableList<UserResponse>>
 }

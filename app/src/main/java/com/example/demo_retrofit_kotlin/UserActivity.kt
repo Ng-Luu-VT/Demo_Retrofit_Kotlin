@@ -67,14 +67,14 @@ class UserActivity : AppCompatActivity() {
     private fun genData(): ArrayList<ItemRecyclerUser>? {
         val listItem: ArrayList<ItemRecyclerUser> = ArrayList<ItemRecyclerUser>()
         val service = getRetrofitUser()
-        val call = service.getListUser(idd)
+        val call = service.getListUser()
         call.enqueue(object : Callback<MutableList<UserResponse>>{
             override fun onResponse(
                 call: Call<MutableList<UserResponse>>,
                 response: Response<MutableList<UserResponse>>
             ) {
                 val listUser = response.body()
-                if (listUser != null) {
+                if (listUser != null){
                     for (i in 0..listUser.size){
                         val item = ItemRecyclerUser()
                         item.setTvTitle("ID: " + listUser[i].id!!)
@@ -82,6 +82,7 @@ class UserActivity : AppCompatActivity() {
                         listItem.add(item)
                     }
                 }
+
             }
 
             override fun onFailure(call: Call<MutableList<UserResponse>>, t: Throwable) {
@@ -97,6 +98,5 @@ class UserActivity : AppCompatActivity() {
 
         var BaseUrl = "https://jsonplaceholder.typicode.com/"
         var id = 1
-        var idd = ""
     }
 }
