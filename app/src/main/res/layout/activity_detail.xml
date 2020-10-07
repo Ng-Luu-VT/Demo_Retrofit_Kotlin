@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Nhập số id cần lấy thông tin"
+        android:id="@+id/edtID"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click để lấy thông tin"
+        app:layout_constraintTop_toBottomOf="@+id/edtID"
+        android:id="@+id/btnGetDetail"/>
+    <TextView
+        android:text="Thông tin lấy được là:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetDetail"
+        android:id="@+id/tvShow"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvShow"
+        android:id="@+id/tvGetDetail"
+        android:text="Detail"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvGetDetail"
+        android:hint="UserID"
+        android:id="@+id/edtUserID"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtUserID"
+        android:hint="Title"
+        android:id="@+id/edtTitle"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtTitle"
+        android:hint="Body"
+        android:id="@+id/edtBody"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click để post thông tin"
+        app:layout_constraintTop_toBottomOf="@+id/edtBody"
+        android:id="@+id/btnPostDetail"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

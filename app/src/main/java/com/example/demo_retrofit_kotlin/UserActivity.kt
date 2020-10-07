@@ -1,5 +1,6 @@
 package com.example.demo_retrofit_kotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -22,8 +23,15 @@ class UserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user)
         val tvUserData = findViewById<TextView>(R.id.textview)
         val btnClick = findViewById<View>(R.id.button)
+        val btnClickNext = findViewById<View>(R.id.buttonNext)
         btnClick.setOnClickListener{getCurrentData(tvUserData)}
+        btnClickNext.setOnClickListener{switchFragment()}
         setUpRecyclerViewUser()
+    }
+
+    private fun switchFragment() {
+        val intent = Intent(this, DetailActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getRetrofitUser(): UserService {
