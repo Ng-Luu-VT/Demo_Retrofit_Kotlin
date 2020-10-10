@@ -66,10 +66,16 @@ class UserActivity : AppCompatActivity() {
     private fun setUpRecyclerViewUser() {
         val rvTest = findViewById<RecyclerView>(R.id.rvTest)
         val mRecyclerUserAdapter = RecyclerUserAdapter(genData())
-        rvTest.layoutManager = LinearLayoutManager(this)
-        rvTest.setHasFixedSize(true)
-        //rvTest.addItemDecoration(DividerItemDecoration(rvTest.context, DividerItemDecoration.VERTICAL))
-        rvTest.adapter = mRecyclerUserAdapter
+        if (mRecyclerUserAdapter.data!!.size == 0){
+            Toast.makeText(applicationContext,"Load List Faile!!! " ,Toast.LENGTH_SHORT).show()
+        }
+        else{
+            rvTest.layoutManager = LinearLayoutManager(this)
+            rvTest.setHasFixedSize(true)
+            //rvTest.addItemDecoration(DividerItemDecoration(rvTest.context, DividerItemDecoration.VERTICAL))
+            rvTest.adapter = mRecyclerUserAdapter
+        }
+
     }
 
     private fun genData(): ArrayList<ItemRecyclerUser>? {

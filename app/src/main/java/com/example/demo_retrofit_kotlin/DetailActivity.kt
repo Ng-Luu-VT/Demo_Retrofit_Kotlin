@@ -18,42 +18,61 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val edtID = findViewById<EditText>(R.id.edtID)
-        val edtUserID = findViewById<EditText>(R.id.edtUserID)
         val edtTitle = findViewById<EditText>(R.id.edtTitle)
         val edtBody = findViewById<EditText>(R.id.edtBody)
         val tvGetDetail = findViewById<TextView>(R.id.tvGetDetail)
+        val tvResponseDelete = findViewById<TextView>(R.id.tvResponseDelete)
         val btnGetDetail = findViewById<Button>(R.id.btnGetDetail)
         val btnPostDetail = findViewById<Button>(R.id.btnPostDetail)
+        val btnDeleteDetail = findViewById<Button>(R.id.btnDeleteDetail)
         btnGetDetail.setOnClickListener{getDetail(edtID,tvGetDetail)}
-        btnPostDetail.setOnClickListener{postDetail(edtUserID,edtTitle,edtBody,tvGetDetail)}
+        btnPostDetail.setOnClickListener{postDetail(edtTitle,edtBody,tvGetDetail)}
+        btnDeleteDetail.setOnClickListener{deteleDetail(tvResponseDelete)}
     }
 
-    private fun postDetail(
-        edtUserID: EditText?,
-        edtTitle: EditText?,
-        edtBody: EditText?,
-        tvGetDetail: TextView?
-    ) {
-
-        val userID: Int = edtUserID!!.text.toString().toInt()
-        val title: String = edtTitle!!.text.toString()
-        val body: String = edtBody!!.text.toString()
+    private fun deteleDetail(tvResponseDelete: TextView?) {
         val service = getRetrofitDetail()
-        val detail : DetailResponse
-        val call = service.postDetail(userID,title,body)
+        val call = service.deleteDetail(1)
         call.enqueue(object : Callback<DetailResponse>{
             override fun onResponse(
                 call: Call<DetailResponse>,
                 response: Response<DetailResponse>
             ) {
+                tvResponseDelete!!.text = response.message()
+            }
+
+            override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
+                tvResponseDelete!!.text = t.message
+            }
+
+        })
+    }
+
+    private fun postDetail(
+        edtTitle: EditText?,
+        edtBody: EditText?,
+        tvGetDetail: TextView?
+    ) {
+        val title: String = edtTitle!!.text.toString()
+        val body: String = edtBody!!.text.toString()
+        val service = getRetrofitDetail()
+        val call = service.postDetail(title,body)
+        val detail = DetailResponse()
+        detail.body = body
+        detail.title = title
+        val call2 = service.postDetailBody(detail)
+        call2.enqueue(object : Callback<DetailResponse>{
+            override fun onResponse(
+                call: Call<DetailResponse>,
+                response: Response<DetailResponse>
+            ) {
                 val detailResponse = response.body()!!
-                val stringBuilder = "UserID: " + detailResponse.userId!! +
-                        "\n" +
-                        "ID: " + detailResponse.id!! +
-                        "\n" +
-                        "Title: " + detailResponse.title!! +
-                        "\n" +
-                        "Detail: " + detailResponse.body!!
+                val stringBuilder =
+                    "ID: " + detailResponse.id!! +
+                            "\n" +
+                            "Title: " + detailResponse.title!! +
+                            "\n" +
+                            "Detail: " + detailResponse.body!!
                 tvGetDetail!!.text = stringBuilder
             }
 
@@ -62,6 +81,26 @@ class DetailActivity : AppCompatActivity() {
             }
 
         })
+//        call.enqueue(object : Callback<DetailResponse>{
+//            override fun onResponse(
+//                call: Call<DetailResponse>,
+//                response: Response<DetailResponse>
+//            ) {
+//                val detailResponse = response.body()!!
+//                val stringBuilder =
+//                        "ID: " + detailResponse.id!! +
+//                        "\n" +
+//                        "Title: " + detailResponse.title!! +
+//                        "\n" +
+//                        "Detail: " + detailResponse.body!!
+//                tvGetDetail!!.text = stringBuilder
+//            }
+//
+//            override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
+//                tvGetDetail!!.text = t.message
+//            }
+//
+//        })
     }
 
     private fun getDetail(edtID: EditText?, tvGetDetail: TextView?) {
@@ -75,8 +114,7 @@ class DetailActivity : AppCompatActivity() {
                     response: Response<DetailResponse>
                 ) {
                     val detailResponse = response.body()!!
-                    val stringBuilder = "UserID: " + detailResponse.userId!! +
-                            "\n" +
+                    val stringBuilder =
                             "ID: " + detailResponse.id!! +
                             "\n" +
                             "Title: " + detailResponse.title!! +

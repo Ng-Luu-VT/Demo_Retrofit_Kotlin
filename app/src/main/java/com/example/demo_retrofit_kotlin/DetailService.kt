@@ -10,9 +10,11 @@ interface DetailService {
     ) : Call<DetailResponse>
     @POST("posts")
     @FormUrlEncoded
-    fun postDetail(@Field("userID") userID: Int,
-                    @Field("title") title: String,
+    fun postDetail(@Field("title") title: String,
                     @Field("body") body: String) : Call<DetailResponse>
     @POST("posts")
     fun postDetailBody(@Body detailResponse: DetailResponse) : Call<DetailResponse>
+    @DELETE("posts/{id}")
+    fun deleteDetail(@Path("id") id: Int
+    ) : Call<DetailResponse>
 }

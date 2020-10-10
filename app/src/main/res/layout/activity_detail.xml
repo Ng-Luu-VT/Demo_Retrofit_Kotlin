@@ -33,16 +33,11 @@
         android:id="@+id/tvGetDetail"
         android:text="Detail"/>
 
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tvGetDetail"
-        android:hint="UserID"
-        android:id="@+id/edtUserID"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/edtUserID"
         android:hint="Title"
         android:id="@+id/edtTitle"/>
     <EditText
@@ -57,6 +52,21 @@
         android:text="Click để post thông tin"
         app:layout_constraintTop_toBottomOf="@+id/edtBody"
         android:id="@+id/btnPostDetail"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DELETE"
+        app:layout_constraintTop_toBottomOf="@+id/btnPostDetail"
+        android:id="@+id/btnDeleteDetail"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteDetail"
+        android:id="@+id/tvResponseDelete"
+        android:text="Response Delete"/>
+
 
 
 
