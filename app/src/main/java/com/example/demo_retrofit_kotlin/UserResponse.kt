@@ -72,3 +72,7 @@ class Geo {
     @SerializedName("lng")
     var lng: String? = null
 }
+
+data class ListUserResponse(
+    val results: List<UserResponse>
+    )

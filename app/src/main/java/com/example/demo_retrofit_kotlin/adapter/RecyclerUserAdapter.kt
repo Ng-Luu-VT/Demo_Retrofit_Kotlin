@@ -34,8 +34,8 @@ class RecyclerUserAdapter(private val mData: ArrayList<ItemRecyclerUser>?) :
         var tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         var tvDetail: TextView = itemView.findViewById(R.id.tvDetail)
         fun binData(item: ItemRecyclerUser) {
-            tvTitle.text = item.getTvTitle()
-            tvDetail.text = item.getTvDetail()
+            tvTitle.text = item.id
+            tvDetail.text = item.title
         }
 
         init {

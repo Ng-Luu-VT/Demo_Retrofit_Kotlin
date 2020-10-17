@@ -1,4 +1,4 @@
-package com.example.demo_retrofit_kotlin
+package com.example.demo_retrofit_kotlin.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.item_recycler_view.*
+import com.example.demo_retrofit_kotlin.DetailResponse
+import com.example.demo_retrofit_kotlin.DetailService
+import com.example.demo_retrofit_kotlin.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.demo_retrofit_kotlin
+package com.example.demo_retrofit_kotlin.data
 
 
 object Model{
